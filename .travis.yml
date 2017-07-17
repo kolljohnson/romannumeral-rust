@@ -1,8 +1,4 @@
 language: rust
 rust: stable
-os:
-  - linux
-  - osx
-script:
-  -- cargo build 
-  -- cargo test
+
+script: cargo test
