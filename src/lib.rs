@@ -20,6 +20,11 @@ mod tests {
     fn number_four_returns_numeral_four() {
         assert_eq!("IV", roman_convert(4));
     }
+
+    #[test]
+    fn number_five_returns_numeral_five() {
+        assert_eq!("V", roman_convert(5));
+    }
 }
 
 fn roman_convert(number: i32) -> String {
@@ -27,6 +32,8 @@ fn roman_convert(number: i32) -> String {
 
     if number == 4 {
         numeral = String::from("IV");
+    } else if number == 5{
+        numeral.push_str("V");
     } else {
         for x in 0..number {
             numeral.push_str("I");
