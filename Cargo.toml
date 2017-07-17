@@ -1,0 +1,6 @@
+[package]
+name = "romannumeral"
+version = "0.1.0"
+authors = ["kolljohnson <kjohnson@pillartechnology.com>"]
+
+[dependencies]
