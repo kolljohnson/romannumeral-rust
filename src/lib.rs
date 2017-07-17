@@ -27,18 +27,27 @@ mod tests {
     }
 }
 
-fn roman_convert(number: i32) -> String {
-    let mut numeral = String::new();
+struct RomanNumeral {
+    numeral: &'static str,
+    value: u32
+}
 
-    if number == 4 {
-        numeral = String::from("IV");
-    } else if number == 5{
-        numeral.push_str("V");
-    } else {
-        for x in 0..number {
-            numeral.push_str("I");
-        }
+const NUMERAL_LIST: [RomanNumeral; 3] = [
+    RomanNumeral {numeral: "V", value: 5},
+    RomanNumeral {numeral: "IV", value: 4},
+    RomanNumeral {numeral: "I", value: 1}
+];
+
+fn roman_convert(mut number: u32) -> String {
+    let mut converted = String::new();
+
+    for numeral in NUMERAL_LIST.iter() {
+        while numeral.value <= number {
+            converted = converted + numeral.numeral;
+            number -= numeral.value; 
+        } 
     }
-    numeral
+
+    converted
 }
 
