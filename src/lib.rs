@@ -82,17 +82,10 @@ fn roman_convert(mut number: u32) -> String {
 }
 
 fn arabic_convert(mut numeral: &str) -> u32 {
-    let mut converted = 0;
-
-    if numeral == "IV" {
-        converted = 4;
-    } else if numeral == "V" {
-        converted = 5
-    }else {
-        for character in numeral.chars() {
-            converted = converted + 1; 
+    match NUMERAL_LIST.iter()
+        .find( |val| numeral.starts_with(val.numeral)) {
+            Some(val) => val.value + arabic_convert(&numeral[val.numeral.len()..]),
+            None => 0
         }
-    }
-    converted
 }
 
