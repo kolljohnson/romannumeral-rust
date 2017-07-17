@@ -32,7 +32,17 @@ struct RomanNumeral {
     value: u32
 }
 
-const NUMERAL_LIST: [RomanNumeral; 3] = [
+const NUMERAL_LIST: [RomanNumeral; 13] = [
+    RomanNumeral {numeral: "M", value: 1000},
+    RomanNumeral {numeral: "CM", value: 900},
+    RomanNumeral {numeral: "D", value: 500},
+    RomanNumeral {numeral: "CD", value: 400},
+    RomanNumeral {numeral: "C", value: 100},
+    RomanNumeral {numeral: "XC", value: 90},
+    RomanNumeral {numeral: "L", value: 50},
+    RomanNumeral {numeral: "XL", value: 40},
+    RomanNumeral {numeral: "X", value: 10},
+    RomanNumeral {numeral: "IX", value: 9},
     RomanNumeral {numeral: "V", value: 5},
     RomanNumeral {numeral: "IV", value: 4},
     RomanNumeral {numeral: "I", value: 1}
