@@ -40,6 +40,11 @@ mod tests {
     fn numeral_four_returns_number_four() {
         assert_eq!(4, arabic_convert("IV"));
     }
+
+    #[test]
+    fn numeral_five_returns_number_five() {
+        assert_eq!(5, arabic_convert("V"));
+    }
 }
 
 struct RomanNumeral {
@@ -81,7 +86,9 @@ fn arabic_convert(mut numeral: &str) -> u32 {
 
     if numeral == "IV" {
         converted = 4;
-    } else {
+    } else if numeral == "V" {
+        converted = 5
+    }else {
         for character in numeral.chars() {
             converted = converted + 1; 
         }
