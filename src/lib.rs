@@ -25,6 +25,11 @@ mod tests {
     fn number_five_returns_numeral_five() {
         assert_eq!("V", roman_convert(5));
     }
+
+    #[test]
+    fn numeral_one_returns_number_one() {
+        assert_eq!(1, arabic_convert("I"));
+    }
 }
 
 struct RomanNumeral {
@@ -59,5 +64,9 @@ fn roman_convert(mut number: u32) -> String {
     }
 
     converted
+}
+
+fn arabic_convert(mut numeral: &str) -> u32 {
+  1
 }
 
