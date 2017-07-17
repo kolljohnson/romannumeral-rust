@@ -30,6 +30,11 @@ mod tests {
     fn numeral_one_returns_number_one() {
         assert_eq!(1, arabic_convert("I"));
     }
+
+    #[test]
+    fn numeral_two_returns_number_two() {
+        assert_eq!(2, arabic_convert("II"));
+    }
 }
 
 struct RomanNumeral {
@@ -67,6 +72,11 @@ fn roman_convert(mut number: u32) -> String {
 }
 
 fn arabic_convert(mut numeral: &str) -> u32 {
-  1
+    let mut converted = 0;
+
+    for character in numeral.chars() {
+        converted = converted + 1; 
+    }
+    converted
 }
 
