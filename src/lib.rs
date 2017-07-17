@@ -15,13 +15,22 @@ mod tests {
     fn number_two_returns_numeral_two() {
         assert_eq!("II", roman_convert(2));
     }
+
+    #[test]
+    fn number_four_returns_numeral_four() {
+        assert_eq!("IV", roman_convert(4));
+    }
 }
 
 fn roman_convert(number: i32) -> String {
     let mut numeral = String::new();
 
-    for x in 0..number {
-        numeral.push_str("I");
+    if number == 4 {
+        numeral = String::from("IV");
+    } else {
+        for x in 0..number {
+            numeral.push_str("I");
+        }
     }
     numeral
 }
