@@ -60,6 +60,11 @@ mod tests {
     fn add_three_to_two_returns_numeral_five() {
         assert_eq!("V", roman_calculator("II", "III"));
     }
+
+    #[test]
+    fn add_one_to_three_returns_numeral_four() {
+        assert_eq!("IV", roman_calculator("I", "III"));
+    }
 }
 
 struct RomanNumeral {
@@ -105,10 +110,7 @@ fn arabic_convert(mut numeral: &str) -> u32 {
 }
 
 fn roman_calculator(mut augend: &str, mut addend: &str) -> String {
-    if augend.len() + addend.len() == 5 {
-        String::from("V")
-    } else {
-        augend.to_owned() + addend
-    }
+    let sum = arabic_convert(augend) + arabic_convert(addend);
+    roman_convert(sum)
 }
 
