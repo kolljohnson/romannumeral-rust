@@ -70,6 +70,11 @@ mod tests {
     fn subtract_twenty_five_to_eight_returns_numeral_seventeen() {
         assert_eq!("XVII", roman_calculator("XXV", "VIII", Operator::Subtract));
     }
+
+    #[test]
+    fn multiply_five_to_five_returns_numeral_twenty_five() {
+        assert_eq!("XXV", roman_calculator("V", "V", Operator::Multiply));
+    }
 }
 
 struct RomanNumeral {
@@ -128,6 +133,7 @@ fn roman_calculator(mut firstNumeral: &str, mut secondNumeral: &str, operator: O
     match operator {
         Operator::Add => roman_convert(firstNumber + secondNumber),
         Operator::Subtract => roman_convert(firstNumber - secondNumber),
+        Operator::Multiply => roman_convert(firstNumber * secondNumber),
         _ => String::from("Operator not supported.")
     }
 }
