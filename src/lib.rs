@@ -75,6 +75,11 @@ mod tests {
     fn multiply_five_to_five_returns_numeral_twenty_five() {
         assert_eq!("XXV", roman_calculator("V", "V", Operator::Multiply));
     }
+
+    #[test]
+    fn divide_thirty_nine_by_thirteen_returns_numeral_three() {
+        assert_eq!("III", roman_calculator("XXXIX", "XIII", Operator::Divide));
+    }
 }
 
 struct RomanNumeral {
@@ -123,8 +128,7 @@ enum Operator {
     Add,
     Subtract,
     Multiply,
-    Divide,
-    Modulo
+    Divide
 }
 
 fn roman_calculator(mut firstNumeral: &str, mut secondNumeral: &str, operator: Operator) -> String {
@@ -134,6 +138,7 @@ fn roman_calculator(mut firstNumeral: &str, mut secondNumeral: &str, operator: O
         Operator::Add => roman_convert(firstNumber + secondNumber),
         Operator::Subtract => roman_convert(firstNumber - secondNumber),
         Operator::Multiply => roman_convert(firstNumber * secondNumber),
+        Operator::Divide => roman_convert(firstNumber / secondNumber),
         _ => String::from("Operator not supported.")
     }
 }
