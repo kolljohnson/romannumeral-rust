@@ -65,6 +65,11 @@ mod tests {
     fn add_one_to_three_returns_numeral_four() {
         assert_eq!("IV", roman_calculator("I", "III", Operator::Add));
     }
+
+    #[test]
+    fn subtract_twenty_five_to_eight_returns_numeral_seventeen() {
+        assert_eq!("XVII", roman_calculator("XXV", "VIII", Operator::Subtract));
+    }
 }
 
 struct RomanNumeral {
@@ -122,6 +127,7 @@ fn roman_calculator(mut firstNumeral: &str, mut secondNumeral: &str, operator: O
     let secondNumber = arabic_convert(secondNumeral);
     match operator {
         Operator::Add => roman_convert(firstNumber + secondNumber),
+        Operator::Subtract => roman_convert(firstNumber - secondNumber),
         _ => String::from("Operator not supported.")
     }
 }
