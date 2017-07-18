@@ -50,6 +50,11 @@ mod tests {
     fn add_one_to_one_returns_numeral_two() {
         assert_eq!("II", roman_calculator("I", "I"));
     }
+
+    #[test]
+    fn add_two_to_one_returns_numeral_three() {
+        assert_eq!("III", roman_calculator("II", "I"));
+    }
 }
 
 struct RomanNumeral {
@@ -95,6 +100,6 @@ fn arabic_convert(mut numeral: &str) -> u32 {
 }
 
 fn roman_calculator(mut augend: &str, mut addend: &str) -> String {
-    String::from("II")
+    augend.to_owned() + addend
 }
 
