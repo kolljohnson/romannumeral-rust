@@ -116,7 +116,7 @@ fn roman_convert(mut number: u32) -> String {
     converted
 }
 
-fn arabic_convert(mut numeral: &str) -> u32 {
+fn arabic_convert(numeral: &str) -> u32 {
     match NUMERAL_LIST.iter()
         .find( |val| numeral.starts_with(val.numeral)) {
             Some(val) => val.value + arabic_convert(&numeral[val.numeral.len()..]),
@@ -131,14 +131,14 @@ enum Operator {
     Divide
 }
 
-fn roman_calculator(mut firstNumeral: &str, mut secondNumeral: &str, operator: Operator) -> String {
-    let firstNumber = arabic_convert(firstNumeral);
-    let secondNumber = arabic_convert(secondNumeral);
+fn roman_calculator(first_numeral: &str, second_numeral: &str, operator: Operator) -> String {
+    let first_number = arabic_convert(first_numeral);
+    let second_number = arabic_convert(second_numeral);
     match operator {
-        Operator::Add => roman_convert(firstNumber + secondNumber),
-        Operator::Subtract => roman_convert(firstNumber - secondNumber),
-        Operator::Multiply => roman_convert(firstNumber * secondNumber),
-        Operator::Divide => roman_convert(firstNumber / secondNumber),
+        Operator::Add => roman_convert(first_number + second_number),
+        Operator::Subtract => roman_convert(first_number - second_number),
+        Operator::Multiply => roman_convert(first_number * second_number),
+        Operator::Divide => roman_convert(first_number / second_number),
         _ => String::from("Operator not supported.")
     }
 }
