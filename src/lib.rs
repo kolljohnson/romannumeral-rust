@@ -48,22 +48,22 @@ mod tests {
 
     #[test]
     fn add_one_to_one_returns_numeral_two() {
-        assert_eq!("II", roman_calculator("I", "I"));
+        assert_eq!("II", roman_calculator("I", "I", Operator::Add));
     }
 
     #[test]
     fn add_two_to_one_returns_numeral_three() {
-        assert_eq!("III", roman_calculator("II", "I"));
+        assert_eq!("III", roman_calculator("II", "I", Operator::Add));
     }
 
     #[test]
     fn add_three_to_two_returns_numeral_five() {
-        assert_eq!("V", roman_calculator("II", "III"));
+        assert_eq!("V", roman_calculator("II", "III", Operator::Add));
     }
 
     #[test]
     fn add_one_to_three_returns_numeral_four() {
-        assert_eq!("IV", roman_calculator("I", "III"));
+        assert_eq!("IV", roman_calculator("I", "III", Operator::Add));
     }
 }
 
@@ -109,8 +109,20 @@ fn arabic_convert(mut numeral: &str) -> u32 {
         }
 }
 
-fn roman_calculator(mut augend: &str, mut addend: &str) -> String {
-    let sum = arabic_convert(augend) + arabic_convert(addend);
-    roman_convert(sum)
+enum Operator {
+    Add,
+    Subtract,
+    Multiply,
+    Divide,
+    Modulo
+}
+
+fn roman_calculator(mut firstNumeral: &str, mut secondNumeral: &str, operator: Operator) -> String {
+    let firstNumber = arabic_convert(firstNumeral);
+    let secondNumber = arabic_convert(secondNumeral);
+    match operator {
+        Operator::Add => roman_convert(firstNumber + secondNumber),
+        _ => String::from("Operator not supported.")
+    }
 }
 
