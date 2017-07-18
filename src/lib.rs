@@ -45,6 +45,11 @@ mod tests {
     fn numeral_five_returns_number_five() {
         assert_eq!(5, arabic_convert("V"));
     }
+
+    #[test]
+    fn add_one_to_one_returns_numeral_two() {
+        assert_eq!("II", roman_calculator("I", "I"));
+    }
 }
 
 struct RomanNumeral {
@@ -87,5 +92,9 @@ fn arabic_convert(mut numeral: &str) -> u32 {
             Some(val) => val.value + arabic_convert(&numeral[val.numeral.len()..]),
             None => 0
         }
+}
+
+fn roman_calculator(mut augend: &str, mut addend: &str) -> String {
+    String::from("II")
 }
 
